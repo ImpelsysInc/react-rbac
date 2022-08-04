@@ -1,0 +1,37 @@
+{
+  "name": "@impelsysinc/react-rbac",
+  "version": "0.0.0",
+  "description": "RBAC based authentication",
+  "main": "dist/react-rbac.js",
+  "module": "dist/react-rbac.mjs",
+  "typings": "dist/react-rbac.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rbac",
+    "react",
+    "authentication",
+    "authorization",
+    "role",
+    "permission"
+  ],
+  "author": {
+    "email": "abhisek.pattnaik@impelsys.com",
+    "name": "Abhisek Pattnaik",
+    "url": "https://about.me/abhisekp"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.0.15",
+    "esbuild": "^0.14.53",
+    "rollup": "^2.77.2",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}

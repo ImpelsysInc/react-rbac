@@ -2,6 +2,12 @@
 
 > RBAC based authentication
 
+## Installation
+
+```shell
+npm install --save ImpelsysInc/react-rbac
+```
+
 ## Usage
 
 ### Using `useRBAC` hook

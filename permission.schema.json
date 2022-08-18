@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "http://example.com/rbac-permission.schema.json",
-  "title": "Root Schema",
+  "$id": "https://raw.githubusercontent.com/ImpelsysInc/react-rbac/master/permission.schema.json",
+  "title": "Permissions Schema",
   "type": "array",
   "default": [],
   "items": {
@@ -23,7 +23,7 @@
       },
       "resourceType": {
         "type": "string",
-        "enum": ["menu", "page", "component"]
+        "examples": ["menu", "page", "component"]
       },
       "action": {
         "type": "string",

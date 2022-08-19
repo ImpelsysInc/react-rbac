@@ -8,8 +8,7 @@
   "homepage": "https://github.com/ImpelsysInc/react-rbac",
   "repository": {
     "url": "https://github.com/ImpelsysInc/react-rbac",
-    "type": "git",
-    "directory": "dist/"
+    "type": "git"
   },
   "publishConfig": {
     "access": "public",

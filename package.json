@@ -4,8 +4,23 @@
   "description": "RBAC based authentication",
   "main": "dist/react-rbac.js",
   "typings": "dist/react-rbac.d.ts",
+  "private": false,
+  "homepage": "https://github.com/ImpelsysInc/react-rbac",
+  "repository": {
+    "url": "https://github.com/ImpelsysInc/react-rbac",
+    "type": "git",
+    "directory": "dist/"
+  },
+  "publishConfig": {
+    "access": "public",
+    "ignore": [
+      "!dist/",
+      "src/"
+    ]
+  },
   "scripts": {
     "build": "rollup -c",
+    "prepack": "npmignore --auto",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -25,6 +40,7 @@
   "devDependencies": {
     "@types/react": "^18.0.15",
     "esbuild": "^0.14.53",
+    "npmignore": "^0.3.0",
     "rollup": "^2.77.2",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-esbuild": "^4.9.1",

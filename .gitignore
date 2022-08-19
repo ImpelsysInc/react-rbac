@@ -157,3 +157,4 @@ sketch
 .env*.local
 !dist/
 !src/
+.npmignore

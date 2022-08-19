@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "description": "RBAC based authentication",
   "main": "dist/react-rbac.js",
-  "typings": "dist/react-rbac.d.ts",
+  "types": "dist/react-rbac.d.ts",
   "private": false,
   "homepage": "https://github.com/ImpelsysInc/react-rbac",
   "repository": {

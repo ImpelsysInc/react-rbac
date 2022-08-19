@@ -18,6 +18,9 @@
       "src/"
     ]
   },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build": "rollup -c",
     "prepack": "npmignore --auto",

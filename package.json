@@ -1,6 +1,6 @@
 {
   "name": "@impelsysinc/react-rbac",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "RBAC based authentication",
   "main": "dist/react-rbac.js",
   "types": "dist/react-rbac.d.ts",

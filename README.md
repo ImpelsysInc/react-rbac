@@ -13,7 +13,7 @@ send a JSON with the response in the format [**`permission.schema.json`**](./per
 ## Installation
 
 ```shell
-npm install --save ImpelsysInc/react-rbac
+npm install --save @ImpelsysInc/react-rbac
 ```
 
 ## API

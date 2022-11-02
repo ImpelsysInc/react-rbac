@@ -52,6 +52,7 @@
     "react": ">=16"
   },
   "dependencies": {
+    "dedent": "^0.7.0",
     "lodash": "^4.17.21"
   }
 }

@@ -13,7 +13,7 @@ send a JSON with the response in the format [**`permission.schema.json`**](./per
 ## Installation
 
 ```shell
-npm install --save @ImpelsysInc/react-rbac
+npm install --save @impelsysinc/react-rbac
 ```
 
 ## API
@@ -86,15 +86,23 @@ A useful component to wrap any other component which need fine-grained permissio
 ### Using `useRBAC` hook
 
 ```tsx
-import React, { ReactNode, FunctionComponent } from "react";
-import { useRBAC, RBACProvider, useRBACContext } from "@impelsysinc/react-rbac";
+import { FunctionComponent, ReactNode, useEffect } from "react";
+import {
+  useRBAC,
+  RBACProvider,
+  useRBACContext,
+  WithPermission
+} from "@impelsysinc/react-rbac";
 
 const PrivateComponent: FunctionComponent<{ children: ReactNode }> = ({
-  children,
+  children
 }) => {
   const { canAccess } = useRBACContext();
 
-  const canReadResource = canAccess({ resource: "resource", action: "read" });
+  const canReadResource = canAccess({
+    resource: "adminPanel",
+    action: "get.all"
+  });
 
   if (canReadResource) {
     return <div>{children}</div>;
@@ -109,28 +117,49 @@ const Layout: FunctionComponent<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     const permissions = [
       /* FETCH PERMISSIONS */
-      { action: "", resource: "" },
-      { resource: "", action: ["", ""] },
-      { resourceType: "", resource: "", action: ["", ""] },
+      { resource: "cart", action: "update.all" },
+      { resource: "adminPanel", action: ["get.all", "update"] },
+      {
+        resourceType: "component",
+        resource: "users.all",
+        action: ["get", "create"]
+      }
     ];
     setPermissions(permissions);
   }, [setPermissions]);
+
+  return <>{children}</>;
 };
 
-const App: FunctionComponent<{ children: ReactNode }> = () => {
+export function App() {
   const rbac = useRBAC();
 
   return (
-    <RBACProvider value={rbac}>
+    <RBACProvider rbac={rbac}>
       <Layout>
         <PrivateComponent>
-          <h1>Will render if resource has read access.</h1>
+          <h1>
+            <code>PrivateComponent</code> will render if resource has read access.
+          </h1>
         </PrivateComponent>
+
+        <WithPermission resource="adminPanel" action="get.all">
+          <h1>
+            <code>WithPermission</code> will render if resource has read access.
+          </h1>
+        </WithPermission>
       </Layout>
     </RBACProvider>
   );
-};
+}
+
+export default App;
+
 ```
+
+<div align="right">
+    <b><a href="https://codesandbox.io/s/react-rbac-demo1-z0200l?file=/src/App.tsx:0-1591">▶ Code Sandbox</a></b>
+</div>
 
 ### Using `WithPermission` HOC
 

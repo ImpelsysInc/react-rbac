@@ -63,9 +63,14 @@ npm install --save @impelsysinc/react-rbac
 
 ## Usage
 
-The API exposes a `useRBAC` hook which optionally takes **default permissions** or a `getPermissions` async function which returns the **permissions**.
+The API exposes a [**`useRBAC`**](#userbac-hook) hook which optionally takes **default permissions**.
+Or you can `setPermissions` from [**`useRBACContext`**](#userbaccontext-context) hook.
+See example [**`Using useRBAC hook`**](#userbaccontext-context).
 
 ### Using `useRBAC` hook
+
+<details>
+<summary><code>useRBAC</code> hook returns useful methods which can be retrieved from <code>RBACContext</code> in any nested components (<u><em>click and open accordion to see usage</em></u>)</summary>
 
 ```tsx
 import { FunctionComponent, ReactNode, useEffect } from "react";
@@ -143,7 +148,12 @@ export default App;
     <b><a href="https://codesandbox.io/s/react-rbac-demo1-z0200l?file=/src/App.tsx:0-1591">▶ Code Sandbox</a></b>
 </div>
 
+</details>
+
 ### Using `WithPermission` HOC
+
+<details>
+<summary><code>WithPermission</code> HOC is a ready-made component to pass the required access privileges (<u><em>click and open accordion to see usage</em></u>)</summary>
 
 ```tsx
 import React, { ReactNode, FunctionComponent } from "react";
@@ -161,6 +171,8 @@ const App: FunctionComponent<{ children: ReactNode }> = () => {
   );
 };
 ```
+
+</details>
 
 ## API
 
@@ -180,9 +192,9 @@ const rbac = useRBAC();
 
 ### `useRBACContext` Context
 
-Must be in one of the nested child component of `RBACProvider`.
+Must be in one of the nested child component of [**`RBACProvider`**](#userbaccontext-context).
 
-#### Values
+#### Return Values
 
 | Value                | Type                      | Description                                                            |
 |----------------------|---------------------------|------------------------------------------------------------------------|
@@ -198,7 +210,10 @@ Must be in one of the nested child component of `RBACProvider`.
 -->
 
 ```tsx
+// Example 1
 const { canAccess } = useRBACContext();
+
+// Example 2
 const { setPermissions, clearPermissions, permissions } = useRBACContext();
 ```
 
@@ -208,14 +223,14 @@ A useful component to wrap any other component which need fine-grained permissio
 
 #### Props
 
-|     PropKey    |          Type          |      Defaults     |                                                Description                                               |
-|:--------------:|:----------------------:|:-----------------:|:--------------------------------------------------------------------------------------------------------:|
-| `children`     | `{ReactNode}`          |                   | ReactNode children components                                                                            |
-| `type`         | `{string}`             | `[default=allow]` | Either `allow` or `deny` permissive type of the rule.                                                    |
-| `action`       | `{string \| string[]}` |                   | The kind of action(s) allowed for the given resource e.g. "get", "get.all", "update", "update.all", etc. |
-| `resource`     | `{string}`             |                   | The target resource of the rule e.g. "product.description", "product.*", "product", etc.                 |
-| `resourceType` | `{string}`             | `[optional]`      | A meta field to specify the type of resource e.g. "menu", "page", "component", "*", etc.                 |
-| `record`       | `{Object}`             | `[optional]`      | Context of the permission i.e. any extra metadata e.g. `{ userId: 1, groupId: 2 }`.                      |
+|    PropKey     |                Type                |     Defaults      |                                               Description                                                |
+|:--------------:|:----------------------------------:|:-----------------:|:--------------------------------------------------------------------------------------------------------:|
+|   `children`   |           `{ReactNode}`            |                   |                                      ReactNode children components                                       |
+|     `type`     |             `{string}`             | `[default=allow]` |                          Either `allow` or `deny` permissive type of the rule.                           |
+|    `action`    | `{string &VerticalLine; string[]}` |                   | The kind of action(s) allowed for the given resource e.g. "get", "get.all", "update", "update.all", etc. |
+|   `resource`   |             `{string}`             |                   |         The target resource of the rule e.g. "product.description", "product.*", "product", etc.         |
+| `resourceType` |             `{string}`             |   `[optional]`    |         A meta field to specify the type of resource e.g. "menu", "page", "component", "*", etc.         |
+|    `record`    |             `{Object}`             |   `[optional]`    |           Context of the permission i.e. any extra metadata e.g. `{ userId: 1, groupId: 2 }`.            |
 
 <!--
 (generated using https://www.tablesgenerator.com/markdown_tables)

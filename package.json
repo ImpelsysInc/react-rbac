@@ -41,6 +41,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/dedent": "^0.7.0",
+    "@types/jest": "^29.2.2",
+    "@types/lodash": "^4.14.188",
     "@types/react": "^18.0.15",
     "esbuild": "^0.14.53",
     "npmignore": "^0.3.0",

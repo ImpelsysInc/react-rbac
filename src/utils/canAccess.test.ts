@@ -3,7 +3,6 @@ import {
   Action,
   Permission,
   PermissionString,
-  PermissionType,
 } from "../constants";
 
 describe("canAccess", () => {

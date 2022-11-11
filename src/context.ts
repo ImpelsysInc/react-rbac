@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Permission, PermissionString } from "./constants";
+import { Permission } from "./constants";
 
 export interface RBACContextValue {
   loadingPermissions: boolean;

@@ -21,6 +21,6 @@ const reActions = new RegExp(
 const DELIMITER = ":";
 
 export const rePermission = new RegExp(
-  `^((?<type>${rePermissionType.source})${ZERO_OR_MORE_SPACES.source})?(${reResources.source})${ZERO_OR_MORE_SPACES.source}(${reResourceType.source})${ZERO_OR_MORE_SPACES.source}$${DELIMITER}(${reActions.source})`,
+  `^((?<type>${rePermissionType.source})${ZERO_OR_MORE_SPACES.source})?(${reResources.source})${ZERO_OR_MORE_SPACES.source}(${reResourceType.source})${ZERO_OR_MORE_SPACES.source}${DELIMITER}(${reActions.source})`,
   "gimu"
 );

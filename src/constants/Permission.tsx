@@ -69,8 +69,6 @@ export interface Permission {
    * @example 1
    * "product"
    *
-   * @example 2
-   * ["product.description", "product.*", "product"]
    */
   resource: /*string[] | */string;
 
@@ -106,6 +104,7 @@ export interface Permission {
    *
    * @example 2
    * {userId: 1, groupId: 2}
+   *
    */
   record?: Record<any, any>;
 

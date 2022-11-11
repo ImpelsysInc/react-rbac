@@ -4,75 +4,90 @@
   "title": "Permissions Schema",
   "type": "array",
   "default": [],
+  "definitions": {
+    "action": {
+      "type": "string",
+      "anyOf": [
+        {
+          "enum": [
+            "get",
+            "get.all",
+            "update",
+            "update.all",
+            "delete",
+            "delete.all",
+            "post",
+            "*"
+          ]
+        },
+        {
+          "pattern": "^([\\w-]+|\\*)(\\.([\\w-]+))*$"
+        }
+      ],
+      "examples": [
+        "get",
+        "get.all",
+        "update",
+        "update.all",
+        "delete",
+        "delete.all",
+        "post",
+        "*"
+      ]
+    }
+  },
   "items": {
     "title": "A Schema",
     "type": "object",
-    "required": ["resource", "action"],
+    "required": [
+      "resource",
+      "action"
+    ],
     "properties": {
       "type": {
         "title": "The type Schema",
         "type": "string",
-        "examples": ["allow", "deny"],
-        "enum": ["allow", "deny"]
+        "examples": [
+          "allow",
+          "deny"
+        ],
+        "enum": [
+          "allow",
+          "deny"
+        ]
       },
       "resource": {
         "title": "The resource Schema",
         "type": "string",
-        "examples": ["product.*", "product.description", "product"],
+        "examples": [
+          "product.*",
+          "product.description",
+          "product"
+        ],
         "pattern": "^([\\w-]+|\\*)(\\.([\\w-]+|\\*))*$"
       },
       "resourceType": {
         "type": "string",
-        "examples": ["menu", "page", "component"]
+        "examples": [
+          "menu",
+          "page",
+          "component"
+        ]
       },
       "action": {
-        "type": "string",
         "anyOf": [
           {
-            "enum": [
-              "get",
-              "get.all",
-              "update",
-              "update.all",
-              "delete",
-              "delete.all",
-              "post",
-              "*"
-            ]
+            "$ref": "#/definitions/action"
           },
           {
-            "pattern": "^([\\w-]+|\\*)(\\.([\\w-]+))*$"
+            "type": "array",
+            "items": {
+              "minItems": 1,
+              "$ref": "#/definitions/action"
+            }
           }
         ]
       }
-    },
-    "examples": [
-      {
-        "type": "allow",
-        "resource": "product.*"
-      },
-      {
-        "type": "deny",
-        "resource": "product.description"
-      },
-      {
-        "resource": "product"
-      }
-    ]
-  },
-  "examples": [
-    [
-      {
-        "type": "allow",
-        "resource": "product.*"
-      },
-      {
-        "type": "deny",
-        "resource": "product.description"
-      },
-      {
-        "resource": "product"
-      }
-    ]
-  ]
+    }
+  }
 }
